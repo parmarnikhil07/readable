@@ -1,0 +1,175 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* added customised css */
+html,body, div{
+  height: 100%;
+}
+
+a{
+  text-decoration: none;
+  color: #691;
+}
+
+/* Side bar */
+.side-bar-main-div ul{
+  padding: 0px;
+}
+
+.side-bar-main-div ul li {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    margin: 0px auto;
+}
+
+.side-bar-main-div {
+  height: 100%;
+  border-right: 1px solid #eee;
+  width:230px;
+  float: left;
+}
+
+.side-bar-main-div ul li{
+  list-style: none;
+  text-align: left;
+}
+
+/* Content */
+.main-content-div div{
+  height: auto !important;
+}
+
+.content-div{
+  margin-left: 230px;
+}
+
+.post-list-div{
+  border: 1px solid #e0dcdc;
+  margin: 20px;
+  padding: 20px;
+  text-align: left;
+}
+
+.comment-list-div{
+  border-bottom: 1px solid #e0dcdc;
+  margin: 20px;
+  padding: 20px;
+  text-align: left;
+}
+
+.post-list-action-div, .post-list-info-div{
+  padding-top: 10px;
+}
+
+.post-list-action-div span, .post-list-info-div span, .comment-list-action-div span{
+  margin-right: 15px;
+}
+
+#product-add tr td {
+    width: 100px;
+    padding: 5px 0px;
+}
+
+#product-add {
+    margin: 0 auto;
+    text-align: left;
+    padding: 5px 0px;
+}
+
+#product-add table{
+  margin: 100px auto 0px;
+  background: #eee;
+  padding: 10px 40px;
+  border-radius: 3px;
+}
+
+textarea{
+  height: 120px;
+  width: 596px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
+input, select{
+  width: 600px;
+  height: 30px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
+
+.add-post-div a, .post-list-action-div a, button{
+  padding: 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  background: #555;
+  border: 1px solid #111;
+  color: #a8c57b;
+  min-width: 100px;
+}
+
+.add-post-div a:hover, .post-list-action-div a:hover, button:hover{
+  color:#fff;
+}
+
+.author-box{
+  border: 1px solid #eee;
+  border-radius: 3px;
+  padding: 10px;
+}
+
+#category-add tr td {
+    float: left;
+    width: 200px;
+    text-align: left;
+    margin-left: 20px;
+}
+
+.comment_save_button, .comment_textarea {
+  display: none;
+}
+
+.sorting-div{
+  margin-top: 30px;
+  text-align: right;
+  margin-right: 20px;
+}
+.sorting-div label{
+  margin-right: 10px;
+}
+
+.comment-list-info-div span{
+  margin-right: 20px;
+}
+
+.comment-list-info-div{
+  padding: 10px 0px;
+}
+
+.post-list-action-div a {
+  font-size: 13px;
+}
