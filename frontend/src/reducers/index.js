@@ -1,5 +1,9 @@
 
 export function reducer (state = {}, action) {
+  state = {
+    ...state,
+    redirect : false,
+  }
   switch (action.type) {
     case 'GET_ALL_POSTS': {
       state = {
@@ -16,12 +20,19 @@ export function reducer (state = {}, action) {
       break;
     }
     case 'GET_POST_DETAIL_BY_ID': {
-      state = {
-        ...state,
-        posts : action.payload,
-        comments: action.comments
+      if(action.payload.id){
+        state = {
+          ...state,
+          posts : action.payload,
+          comments: action.comments
+        }
+      } else {
+        state = {
+          ...state,
+          redirect : true,
+        }
       }
-      break;
+    break;
     }
     case 'VOTE_UP_DOWN': {
       if(!action.detailPage){
@@ -179,8 +190,16 @@ export function reducer (state = {}, action) {
       break;
     }
     default: {
-      state
+      state = {
+        ...state
+      }
     }
+  }
+
+  //set categories
+  state = {
+    ...state,
+    categories:action.categories
   }
   return state;
 }

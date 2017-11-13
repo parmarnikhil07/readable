@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import * as API from './../utils/api.js';
 import './../App.css';
 import ReactDOM from 'react-dom';
-import { Redirect } from 'react-router'
+import { Redirect } from 'react-router';
+import { connect } from 'react-redux';
 
 class AddNewPost extends Component {
 
@@ -12,27 +13,32 @@ class AddNewPost extends Component {
       id:''
     }
 
+    componentDidMount(e){
+      this.props.getAllCategories();
+    }
+
     //If you use arrow function you don't need to bind function, else you have to use bind in constructor
     callAddFunction = (e) => {
       e.preventDefault();
       if(ReactDOM.findDOMNode(this.refs.title).value.trim().length <= 0 || ReactDOM.findDOMNode(this.refs.body).value.trim().length <= 0 || ReactDOM.findDOMNode(this.refs.author).value.trim().length <= 0 || ReactDOM.findDOMNode(this.refs.category).value.trim().length <= 0){
-        alert("Please fill all fields!");
-      } else {
-        let data = {};
-        data.id = new Date().getTime();
-        data.timestamp = new Date().getTime();
-        data.title = ReactDOM.findDOMNode(this.refs.title).value.trim();
-        data.body = ReactDOM.findDOMNode(this.refs.body).value.trim();
-        data.author = ReactDOM.findDOMNode(this.refs.author).value.trim();
-        data.category = ReactDOM.findDOMNode(this.refs.category).value.trim();
-        API.addNewPost(data).then((res) => {
-          this.setState({redirect:true,id:res.id});
-        });
+          alert("Please fill all fields!");
+        } else {
+          let data = {};
+          data.id = new Date().getTime();
+          data.timestamp = new Date().getTime();
+          data.title = ReactDOM.findDOMNode(this.refs.title).value.trim();
+          data.body = ReactDOM.findDOMNode(this.refs.body).value.trim();
+          data.author = ReactDOM.findDOMNode(this.refs.author).value.trim();
+          data.category = ReactDOM.findDOMNode(this.refs.category).value.trim();
+          API.addNewPost(data).then((res) => {
+            this.setState({redirect:true,id:res.id});
+          });
+      }
     }
-    }
+
   render() {
     if(this.state.redirect){
-       return <Redirect to={`/posts/${this.state.id}`} />
+       return <Redirect to={`/category/${this.state.id}`} />
     }
     return (
       <div className="content-div">
@@ -74,5 +80,10 @@ class AddNewPost extends Component {
       );
   }
 }
+  const mapDispatchToProps = (dispatch) => {
+    return {
+      getAllCategories : (data) => dispatch({type:'GET_ALL_CATEGORIES'})
+    }
+  }
 
-export default AddNewPost;
+export default connect ("", mapDispatchToProps)(AddNewPost);

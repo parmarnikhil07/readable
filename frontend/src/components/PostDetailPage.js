@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import { Redirect } from 'react-router'
 import { connect } from 'react-redux';
 
-class ReduxCategory extends Component {
+class PostDetailPage extends Component {
 
     componentDidMount(e){
       this.props.getPostDetailById(this.props.match.params.post_id);  //
@@ -82,6 +82,7 @@ class ReduxCategory extends Component {
                   <span>Author: {this.props.postDetail.author}</span>
                   <span>Time: {new Date(this.props.postDetail.timestamp).toUTCString()}</span>
                   <span>Category: {this.props.postDetail.category}</span>
+                  <span>Comments: {this.props.comments.length}</span>
                 </div>
                 <div className='post-list-action-div'>
                   <span>VoteCount: {this.props.postDetail.voteScore}</span>
@@ -176,4 +177,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect (mapStateToProps, mapDispatchToProps)(ReduxCategory);
+export default connect (mapStateToProps, mapDispatchToProps)(PostDetailPage);

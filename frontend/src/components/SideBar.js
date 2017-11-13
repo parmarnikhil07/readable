@@ -1,26 +1,15 @@
 import React, { Component } from 'react';
-import * as API from './../utils/api.js';
 import './../App.css';
+import { connect } from 'react-redux';
 
 class SideBar extends Component {
-  state = {
-    categories: [],
-  }
-
-  componentDidMount(e){
-    API.getAllCategories().then(
-      ( categories ) => {
-        this.setState(categories);
-      });
-    }
-
   render() {
     return (
       <div className="side-bar-main-div">
         <ul>
         <li key="Categories"><h2><a href="/#/">Categories</a></h2></li>
           {
-            this.state.categories.map((category) => {
+            this.props.categories && this.props.categories.map((category) => {
               return (<li key={category.name}> <a href={"/#/"+category.name}>{category.name}</a></li>)
             })
           }
@@ -33,4 +22,10 @@ class SideBar extends Component {
   }
 }
 
-export default SideBar;
+const mapStateToProps = (state) => {
+  return {
+    categories: state.categories
+  }
+}
+
+export default connect (mapStateToProps)(SideBar);

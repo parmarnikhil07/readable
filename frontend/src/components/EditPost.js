@@ -3,7 +3,7 @@ import * as API from './../utils/api.js';
 import './../App.css';
 import ReactDOM from 'react-dom';
 import { Redirect } from 'react-router'
-// var ReactDOM = require('react-dom');
+import { connect } from 'react-redux';
 
 class AddNewPost extends Component {
 
@@ -18,6 +18,7 @@ class AddNewPost extends Component {
     }
 
     componentDidMount(){
+      this.props.getAllCategories();
       API.getPostDetailById(this.props.match.params.post_id)
       .then((postDetail) => {
         this.setState({postDetail});
@@ -93,4 +94,10 @@ class AddNewPost extends Component {
   }
 }
 
-export default AddNewPost;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getAllCategories : (data) => dispatch({type:'GET_ALL_CATEGORIES'})
+  }
+}
+
+export default connect ("", mapDispatchToProps)(AddNewPost);

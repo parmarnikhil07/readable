@@ -40,7 +40,7 @@ class HomeContent extends Component {
         this.props.posts.map((post, i) => {
           return (
             <div key={i} className="post-list-div">
-              <h2><a href={`/#/posts/${post.id}`}>{post.title}</a></h2>
+              <h2><a href={`/#/${post.category}/${post.id}`}>{post.title}</a></h2>
               <div className='post-list-info-div'>
                 <span>Author: {post.author}</span>
                 <span>Time: {new Date((post.timestamp)).toUTCString()}</span>
